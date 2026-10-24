@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Event Management</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .api-container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .api-form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .api-form input,
+        .api-form textarea,
+        .api-form select {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .api-form textarea {
+            grid-column: 1 / -1;
+        }
+
+        .api-button {
+            background: #1f3a2e;
+            color: white;
+            padding: 9px 13px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 3px;
+        }
+
+        .api-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .api-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 18px;
+        }
+
+        .api-table th,
+        .api-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .api-table th {
+            background: #1f3a2e;
+            color: white;
+        }
+
+        #apiMessage {
+            padding: 12px;
+            margin: 12px 0;
+            background: #e9f3e9;
+        }
+
+        .api-form h2 {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 600px) {
+            .api-form {
+                grid-template-columns: 1fr;
+            }
+            .api-form textarea,
+            .api-form h2 {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<main class="api-container">
+    <h1>AJAX Event Management</h1>
+    <p>Add, view, edit, and delete events without reloading the page.</p>
+
+    <a href="admin-dashboard.php">Back to Admin Dashboard</a>
+
+    <p id="apiMessage" role="status" aria-live="polite">Loading events...</p>
+
+    <form id="eventForm" class="api-form">
+        <h2 id="formHeading">Add Event</h2>
+
+        <input type="hidden" id="eventId">
+
+        <input id="title" maxlength="150"
+               placeholder="Event title" required>
+
+        <input id="eventDate" type="date" required>
+
+        <input id="venue" maxlength="150"
+               placeholder="Venue" required>
+
+        <select id="category" required>
+            <option value="General">General</option>
+            <option value="Technical">Technical</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Cultural">Cultural</option>
+            <option value="Sports">Sports</option>
+        </select>
+
+        <select id="status">
+            <option value="open">Open</option>
+            <option value="closed">Closed</option>
+        </select>
+
+        <textarea id="description" rows="3"
+                  placeholder="Event description" required></textarea>
+
+        <div>
+            <button class="api-button" type="submit" id="saveButton">
+                Add Event
+            </button>
+            <button class="api-button" type="button" id="cancelButton" hidden>
+                Cancel Edit
+            </button>
+        </div>
+    </form>
+
+    <h2>Events</h2>
+
+    <div class="api-table-wrapper">
+        <table class="api-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Venue</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="eventRows">
+                <tr><td colspan="7">Loading...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script>
+const apiUrl = "api-events.php";
+
+const form = document.querySelector("#eventForm");
+const rows = document.querySelector("#eventRows");
+const message = document.querySelector("#apiMessage");
+const heading = document.querySelector("#formHeading");
+const saveButton = document.querySelector("#saveButton");
+const cancelButton = document.querySelector("#cancelButton");
+
+function showMessage(text) {
+    message.textContent = text;
+}
+
+async function requestApi(options = {}) {
+    const response = await fetch(apiUrl, options);
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+        throw new Error(result.message || "Request failed.");
+    }
+
+    return result;
+}
+
+function makeCell(text) {
+    const cell = document.createElement("td");
+    cell.textContent = text ?? "";
+    return cell;
+}
+
+function makeButton(text, action, id) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "api-button";
+    button.textContent = text;
+    button.addEventListener("click", () => action(id));
+    return button;
+}
+
+async function loadEvents() {
+    rows.replaceChildren();
+    const loadingRow = document.createElement("tr");
+    const loadingCell = document.createElement("td");
+    loadingCell.colSpan = 7;
+    loadingCell.textContent = "Loading events...";
+    loadingRow.append(loadingCell);
+    rows.append(loadingRow);
+
+    try {
+        const result = await requestApi();
+        rows.replaceChildren();
+
+        if (result.data.length === 0) {
+            const row = document.createElement("tr");
+            const cell = makeCell("No events found.");
+            cell.colSpan = 7;
+            row.append(cell);
+            rows.append(row);
+        }
+
+        result.data.forEach(event => {
+            const row = document.createElement("tr");
+
+            row.append(
+                makeCell(event.event_id),
+                makeCell(event.title),
+                makeCell(event.event_date),
+                makeCell(event.venue),
+                makeCell(event.category),
+                makeCell(event.status)
+            );
+
+            const actions = document.createElement("td");
+            actions.append(
+                makeButton("Edit", editEvent, event.event_id),
+                makeButton("Delete", deleteEvent, event.event_id)
+            );
+
+            row.append(actions);
+            rows.append(row);
+        });
+
+        showMessage("Events loaded successfully.");
+    } catch (error) {
+        rows.replaceChildren();
+        const row = document.createElement("tr");
+        const cell = makeCell(error.message);
+        cell.colSpan = 7;
+        row.append(cell);
+        rows.append(row);
+        showMessage("Error: " + error.message);
+    }
+}
+
+function resetForm() {
+    form.reset();
+    document.querySelector("#eventId").value = "";
+    heading.textContent = "Add Event";
+    saveButton.textContent = "Add Event";
+    cancelButton.hidden = true;
+}
+
+async function editEvent(id) {
+    try {
+        const result = await requestApi();
+        const event = result.data.find(item => Number(item.event_id) === Number(id));
+
+        if (!event) {
+            throw new Error("Event not found.");
+        }
+
+        document.querySelector("#eventId").value = event.event_id;
+        document.querySelector("#title").value = event.title;
+        document.querySelector("#eventDate").value = event.event_date;
+        document.querySelector("#venue").value = event.venue;
+        document.querySelector("#category").value = event.category;
+        document.querySelector("#status").value = event.status;
+        document.querySelector("#description").value = event.description;
+
+        heading.textContent = "Edit Event";
+        saveButton.textContent = "Save Changes";
+        cancelButton.hidden = false;
+
+        form.scrollIntoView({ behavior: "smooth" });
+        showMessage("Editing event #" + id);
+    } catch (error) {
+        showMessage("Error: " + error.message);
+    }
+}
+
+form.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const id = document.querySelector("#eventId").value;
+
+    const data = {
+        action: id ? "update" : "add",
+        title: document.querySelector("#title").value.trim(),
+        description: document.querySelector("#description").value.trim(),
+        event_date: document.querySelector("#eventDate").value,
+        venue: document.querySelector("#venue").value.trim(),
+        category: document.querySelector("#category").value,
+        status: document.querySelector("#status").value
+    };
+
+    if (id) {
+        data.event_id = Number(id);
+    }
+
+    saveButton.disabled = true;
+    showMessage("Saving event...");
+
+    try {
+        const result = await requestApi({
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        showMessage(result.message);
+        resetForm();
+        await loadEvents();
+        showMessage(result.message);
+    } catch (error) {
+        showMessage("Error: " + error.message);
+    } finally {
+        saveButton.disabled = false;
+    }
+});
+
+async function deleteEvent(id) {
+    if (!confirm("Are you sure you want to delete event #" + id + "?")) {
+        return;
+    }
+
+    showMessage("Deleting event...");
+
+    try {
+        const result = await requestApi({
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                action: "delete",
+                event_id: Number(id)
+            })
+        });
+
+        resetForm();
+        await loadEvents();
+        showMessage(result.message);
+    } catch (error) {
+        showMessage("Error: " + error.message);
+    }
+}
+
+cancelButton.addEventListener("click", resetForm);
+
+loadEvents();
+</script>
+</body>
+</html>

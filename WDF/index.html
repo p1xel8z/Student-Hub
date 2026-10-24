@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Northbridge University</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+
+        <div>
+            <img src="logo.png" width="10%" alt="Northbridge University Logo">
+            <h1>Northbridge University</h1>
+        </div>
+
+
+        <nav aria-label="Main navigation">
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="about.html">About</a></li>
+
+                <li>
+                    <details>
+                        <summary>Programs</summary>
+                        <ul>
+                            <li><a href="cse.html">B.Tech CSE</a></li>
+                            <li><a href="it.html">B.Tech IT</a></li>
+                            <li><a href="ce.html">B.Tech CE</a></li>
+                        </ul>
+                    </details>
+                </li>
+
+                <li><a href="faculty.html">Faculty</a></li>
+
+                <li>
+                    <details>
+                        <summary>Campus Life</summary>
+                        <ul>
+                            <li><a href="clubs.html">Clubs &amp; Societies</a></li>
+                            <li><a href="facilities.html">Facilities</a></li>
+                             <li><a href="events.html">Events</a></li>
+                        </ul>
+                    </details>
+                </li>
+
+                <li>
+                    <details>
+                        <summary>Student Corner</summary>
+                        <ul>
+                            <li><a href="https://sites.google.com/view/tatkalgyan">Student Resources</a></li>
+                            <li><a
+                                    href="https://drive.google.com/drive/folders/10-XqFw6ISXnDeyajK8oB3YIIj6NfrIyO">Downloads</a>
+                            </li>
+                            <li><a
+                                    href="https://drive.google.com/drive/folders/18NAT1fcOe5nG25ddphqluyIs9CLvWQ5Q">Syllabus</a>
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+
+                <li><a href="contact.html">Contact</a></li>
+
+                <li><a href="faq.html">FAQ</a></li>
+
+                <li><a href="login.php">Login</a></li>
+            </ul>
+
+        </nav>
+
+        <button id="themeToggle" type="button">Dark Mode</button>
+
+    </header>
+
+
+    <main>
+
+        <div id="notificationBanner">
+            <p>
+                <strong>Notice:</strong>
+                Admissions are now open for the upcoming academic year.
+            </p>
+
+            <button id="closeNotification" type="button" aria-label="Close notification">
+                x
+            </button>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero">
+
+            <h2>Welcome to Northbridge University</h2>
+
+            <p>
+                A place to learn, build, participate, and grow.
+            </p>
+
+            <p>
+                Explore our academic programs, discover campus life,
+                and become part of our growing university community.
+            </p>
+
+            <button id="openModal" type="button">Learn More</button>
+
+        </section>
+
+        <section class="slider">
+            <h2>University Highlights</h2>
+
+            <div class="slides">
+                <article class="slide active">
+                    <h3>Academic Excellence</h3>
+                    <p>
+                        Northbridge University focuses on strong academics,
+                        practical learning, and career development.
+                    </p>
+                </article>
+
+                <article class="slide">
+                    <h3>Modern Learning</h3>
+                    <p>
+                        Students learn through modern classrooms, technology,
+                        projects, and hands-on activities.
+                    </p>
+                </article>
+
+                <article class="slide">
+                    <h3>Campus Community</h3>
+                    <p>
+                        Students can participate in clubs, societies, events,
+                        and activities that build a strong campus community.
+                    </p>
+                </article>
+            </div>
+
+            <button id="prevSlide" type="button">Previous</button>
+            <button id="nextSlide" type="button">Next</button>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="card-section">
+
+            <h2>Why Choose Northbridge University?</h2>
+
+            <article>
+                <h3>Academic Excellence</h3>
+                <p>
+                    Develop strong academic foundations through
+                    structured and career-focused programs.
+                </p>
+            </article>
+
+            <article>
+                <h3>Modern Learning</h3>
+                <p>
+                    Gain practical knowledge through technology,
+                    projects, laboratories, and hands-on learning.
+                </p>
+            </article>
+
+            <article>
+                <h3>Campus Community</h3>
+                <p>
+                    Connect with students, clubs, societies,
+                    and activities beyond the classroom.
+                </p>
+            </article>
+
+        </section>
+
+
+        <!-- Programs -->
+        <section class="card-section">
+
+            <h2>Our Programs</h2>
+
+            <article>
+                <h3>B.Tech Computer Science &amp; Engineering</h3>
+                <p>
+                    Build foundations in programming, software development,
+                    computer systems, and emerging technologies.
+                </p>
+                <a href="cse.html">Explore CSE</a>
+            </article>
+
+            <article>
+                <h3>B.Tech Information Technology</h3>
+                <p>
+                    Learn about software, networks, databases,
+                    web technologies, and modern IT systems.
+                </p>
+                <a href="it.html">Explore IT</a>
+            </article>
+
+            <article>
+                <h3>B.Tech Computer Engineering</h3>
+                <p>
+                    Explore computer hardware, software,
+                    systems, and engineering technologies.
+                </p>
+                <a href="ce.html">Explore CE</a>
+            </article>
+
+        </section>
+
+
+        <!-- Campus Life -->
+        <section class="card-section two-cards">
+
+            <h2>Campus Life</h2>
+
+            <article>
+                <h3>Clubs &amp; Societies</h3>
+                <p>
+                    Discover student-led technical, cultural,
+                    creative, and recreational communities.
+                </p>
+                <a href="clubs.html">Explore Clubs</a>
+            </article>
+
+            <article>
+                <h3>Campus Facilities</h3>
+                <p>
+                    Explore the learning spaces, laboratories,
+                    library, recreation areas, and other facilities
+                    available across campus.
+                </p>
+                <a href="facilities.html">Explore Facilities</a>
+            </article>
+
+        </section>
+
+
+        <!-- Latest Notices -->
+        <section>
+
+            <h2>Latest Notices</h2>
+
+            <article>
+                <h3>Academic Announcement</h3>
+                <p>
+                    Important academic information will be displayed here.
+                </p>
+            </article>
+
+            <article>
+                <h3>Student Notice</h3>
+                <p>
+                    Check the latest updates and announcements
+                    from the university.
+                </p>
+            </article>
+
+            <article>
+                <h3>Campus Announcement</h3>
+                <p>
+                    Stay updated with important campus-related information.
+                </p>
+            </article>
+
+        </section>
+
+
+        <!-- Quick Access -->
+        <section>
+
+            <h2>Quick Access</h2>
+
+            <ul>
+                <li><a href="cse.html">Programs</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="clubs.html">Campus Life</a></li>
+                <li><a href="student-resources.html">Student Corner</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="faq.html">Frequently Asked Questions</a></li>
+            </ul>
+
+        </section>
+
+        <div id="infoModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modalContent">
+                <button id="closeModal" type="button" aria-label="Close modal">x</button>
+
+                <h2 id="modalTitle">University Information</h2>
+
+                <p>
+                    Northbridge University provides a range of academic programs,
+                    modern facilities, and opportunities for students to participate
+                    in campus activities.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <h2>Northbridge University</h2>
+
+        <p>
+            Learn. Build. Participate. Grow.
+        </p>
+
+        <nav aria-label="Footer navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cse.html">Programs</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+
+        <p>&copy; 2026 Northbridge University. All rights reserved.</p>
+
+    </footer>
+
+
+</body>
+
+</html>

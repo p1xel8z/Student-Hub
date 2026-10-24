@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Northbridge University - Events</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="events.js" defer></script>
+</head>
+<body>
+
+<header>
+    <div>
+        <img src="logo.png" width="10%" alt="Northbridge University Logo">
+        <h1>Northbridge University</h1>
+    </div>
+
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+
+            <li>
+                <details>
+                    <summary>Programs</summary>
+                    <ul>
+                        <li><a href="cse.html">B.Tech CSE</a></li>
+                        <li><a href="it.html">B.Tech IT</a></li>
+                        <li><a href="ce.html">B.Tech CE</a></li>
+                    </ul>
+                </details>
+            </li>
+
+            <li><a href="faculty.html">Faculty</a></li>
+
+            <li>
+                <details>
+                    <summary>Campus Life</summary>
+                    <ul>
+                        <li><a href="clubs.html">Clubs &amp; Societies</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Student Corner</summary>
+                    <ul>
+                        <li><a href="https://sites.google.com/view/tatkalgyan">Student Resources</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/10-XqFw6ISXnDeyajK8oB3YIIj6NfrIyO">Downloads</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/18NAT1fcOe5nG25ddphqluyIs9CLvWQ5Q">Syllabus</a></li>
+                    </ul>
+                </details>
+            </li>
+
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <button id="themeToggle" type="button">Dark Mode</button>
+</header>
+
+<main>
+    <h2>University Events</h2>
+    <p>Explore and register for events at Northbridge University.</p>
+
+    <section class="event-controls">
+        <input type="text" id="searchInput" placeholder="Search events...">
+
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="Technical">Technical</option>
+            <option value="Cultural">Cultural</option>
+            <option value="Sports">Sports</option>
+            <option value="Workshop">Workshop</option>
+        </select>
+
+        <select id="sortSelect">
+            <option value="name">Sort by Name</option>
+            <option value="date">Sort by Date</option>
+        </select>
+    </section>
+
+    <p id="loadingMessage">Loading events from the database...</p>
+    <p id="errorMessage" role="alert"></p>
+
+    <section id="eventsContainer" class="events-container">
+        <!-- Events are loaded from MySQL using JavaScript. -->
+    </section>
+
+    <section id="pagination">
+        <!-- Pagination buttons are created using JavaScript. -->
+    </section>
+
+    <section id="eventRegistration">
+        <h2>Register for an Event</h2>
+        <p>Enter your registered student details and select an event.</p>
+
+        <p id="registrationMessage" role="status" aria-live="polite"></p>
+
+        <form action="process-event.php" method="POST">
+            <div>
+                <label for="eventEmail">Registered Email</label>
+                <input type="email" id="eventEmail" name="email" required>
+            </div>
+
+            <div>
+                <label for="collegeStudentId">College Student ID</label>
+                <input type="text" id="collegeStudentId"
+                       name="college_student_id" maxlength="30" required>
+            </div>
+
+            <div>
+                <label for="eventId">Select Event</label>
+                <select id="eventId" name="event_id" required>
+                    <option value="">Loading events...</option>
+                </select>
+            </div>
+
+            <input type="hidden" id="csrfToken" name="csrf_token">
+
+            <button type="submit">Register for Event</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <h2>Northbridge University</h2>
+    <p>Learn. Build. Participate. Grow.</p>
+
+    <nav aria-label="Footer navigation">
+        <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="cse.html">Programs</a></li>
+            <li><a href="faculty.html">Faculty</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <p>&copy; 2026 Northbridge University. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

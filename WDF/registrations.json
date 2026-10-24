@@ -1,0 +1,38 @@
+[
+    {
+        "first_name": "Aarav",
+        "last_name": "Patel",
+        "email": "aarav.test@example.com",
+        "mobile": "9876543210",
+        "date_of_birth": "2005-10-11",
+        "gender": "female",
+        "program": "cse",
+        "year": "1",
+        "student_id": "WDF2026001",
+        "password_hash": "$2y$10$5JfM6wOZyPCU0ejTEh9x/OSUNCrIpEgYyQkrErFecIrKAXGZTTn.i"
+    },
+    {
+        "first_name": "Aaravi",
+        "last_name": "Patel",
+        "email": "aarav.test@example.com",
+        "mobile": "9876543210",
+        "date_of_birth": "2026-10-06",
+        "gender": "female",
+        "program": "it",
+        "year": "3",
+        "student_id": "WDF2026002",
+        "password_hash": "$2y$10$7aW2Yc6ccUd/GzIuQxgFw.sbk4qa59Uyp/aZ/aSDglXvGqbrOa1iy"
+    },
+    {
+        "first_name": "Rahul",
+        "last_name": "Patel",
+        "email": "abcd@gmail.com",
+        "mobile": "1234567890",
+        "date_of_birth": "2026-10-06",
+        "gender": "male",
+        "program": "cse",
+        "year": "1",
+        "student_id": "WDF2026003",
+        "password_hash": "$2y$10$VqeGFaEUj9WFiqQm9CzOj.2ILMilMbpnpbs6u7nTlCo3l4IWmwULG"
+    }
+]

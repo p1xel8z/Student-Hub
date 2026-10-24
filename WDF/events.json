@@ -1,0 +1,108 @@
+
+[
+    {
+        "id": 1,
+        "name": "Tech Fest",
+        "category": "Technical",
+        "date": "2026-10-10",
+        "location": "Main Auditorium"
+    },
+    {
+        "id": 2,
+        "name": "Cultural Night",
+        "category": "Cultural",
+        "date": "2026-10-15",
+        "location": "Open Ground"
+    },
+    {
+        "id": 3,
+        "name": "Coding Competition",
+        "category": "Technical",
+        "date": "2026-10-20",
+        "location": "Computer Lab"
+    },
+    {
+        "id": 4,
+        "name": "Annual Sports Meet",
+        "category": "Sports",
+        "date": "2026-11-02",
+        "location": "Sports Complex"
+    },
+    {
+        "id": 5,
+        "name": "Photography Workshop",
+        "category": "Workshop",
+        "date": "2026-11-05",
+        "location": "Seminar Hall"
+    },
+    {
+        "id": 6,
+        "name": "Web Development Workshop",
+        "category": "Workshop",
+        "date": "2026-11-10",
+        "location": "Computer Lab"
+    },
+    {
+        "id": 7,
+        "name": "Dance Competition",
+        "category": "Cultural",
+        "date": "2026-11-15",
+        "location": "Open Ground"
+    },
+    {
+        "id": 8,
+        "name": "Football Tournament",
+        "category": "Sports",
+        "date": "2026-11-20",
+        "location": "Sports Complex"
+    },
+    {
+        "id": 9,
+        "name": "Robotics Exhibition",
+        "category": "Technical",
+        "date": "2026-11-25",
+        "location": "Main Auditorium"
+    },
+    {
+        "id": 10,
+        "name": "Music Festival",
+        "category": "Cultural",
+        "date": "2026-12-01",
+        "location": "Open Ground"
+    },
+    {
+        "id": 11,
+        "name": "AI Seminar",
+        "category": "Technical",
+        "date": "2026-12-05",
+        "location": "Seminar Hall"
+    },
+    {
+        "id": 12,
+        "name": "Basketball Tournament",
+        "category": "Sports",
+        "date": "2026-12-10",
+        "location": "Sports Complex"
+    },
+    {
+        "id": 13,
+        "name": "Resume Building Session",
+        "category": "Workshop",
+        "date": "2026-12-15",
+        "location": "Seminar Hall"
+    },
+    {
+        "id": 14,
+        "name": "Photography Exhibition",
+        "category": "Cultural",
+        "date": "2026-12-20",
+        "location": "Art Gallery"
+    },
+    {
+        "id": 15,
+        "name": "Hackathon",
+        "category": "Technical",
+        "date": "2026-12-25",
+        "location": "Computer Lab"
+    }
+]
